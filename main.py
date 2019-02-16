@@ -215,7 +215,7 @@ async def manual (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
-        result = ds.search(search, "manual")
+        #result = ds.search(search, "manual")
 
         embed_success.set_author(name = 'We found a result')
         embed_success.add_field(name = 'Name:', value = result.title, inline = False)
@@ -249,7 +249,7 @@ async def script (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
-        result = ds.search(search, "script")
+        #result = ds.search(search, "script")
 
         embed_success.set_author(name = 'We found a result')
         embed_success.add_field(name = 'Name:', value = result.title, inline = False)
