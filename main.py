@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 import urbandictionary as ud
 import wikipedia as wp
-import docsearcher as ds
+import docssearcher as ds
 
 TOKEN = os.environ['token']
 Client = discord.Client()
@@ -180,6 +180,40 @@ async def script (ctx, search = ""):
         embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
 
         await client.send_message(channel, embed=embed_error)
+
+@client.command(pass_context = True)
+async def google (ctx, search = ""):
+  sender = ctx.message.author
+  channel = ctx.message.channel
+
+  embed_error = discord.Embed(
+    colour = discord.Colour.red()
+  )
+
+  if channel = ctx.message.channel:
+      embed_success.set_author(name = 'Not working')
+      embed_success.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
+
+      await client.send_message(channel, embed=embed_error)
+
+      return
+
+@client.command(pass_context = True)
+async def stack (ctx, search = ""):
+  sender = ctx.message.author
+  channel = ctx.message.channel
+
+  embed_error = discord.Embed(
+    colour = discord.Colour.red()
+  )
+
+  if channel = ctx.message.channel:
+      embed_success.set_author(name = 'Not working')
+      embed_success.add_field(name = 'Stack Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
+
+      await client.send_message(channel, embed=embed_error)
+
+      return
 
 if __name__ == '__main__':
     client.run(TOKEN)
