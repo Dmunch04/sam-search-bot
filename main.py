@@ -190,13 +190,12 @@ async def google (ctx, search = ""):
     colour = discord.Colour.red()
   )
 
-  if channel = ctx.message.channel:
-      embed_success.set_author(name = 'Not working')
-      embed_success.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
+  embed_success.set_author(name = 'Not working')
+  embed_success.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
 
-      await client.send_message(channel, embed=embed_error)
+  await client.send_message(channel, embed=embed_error)
 
-      return
+  return
 
 @client.command(pass_context = True)
 async def stack (ctx, search = ""):
@@ -207,13 +206,13 @@ async def stack (ctx, search = ""):
     colour = discord.Colour.red()
   )
 
-  if channel = ctx.message.channel:
-      embed_success.set_author(name = 'Not working')
-      embed_success.add_field(name = 'Stack Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
+  embed_success.set_author(name = 'Not working')
+  embed_success.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
 
-      await client.send_message(channel, embed=embed_error)
+  await client.send_message(channel, embed=embed_error)
 
-      return
+  return
+
 
 if __name__ == '__main__':
     client.run(TOKEN)
