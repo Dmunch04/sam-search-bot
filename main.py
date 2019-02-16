@@ -179,3 +179,6 @@ async def script (ctx, search = ""):
         embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
 
         await client.send_message(channel, embed=embed_error)
+
+if __name__ == '__main__':
+    client.run(TOKEN)
