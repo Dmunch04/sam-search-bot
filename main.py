@@ -7,11 +7,21 @@ import urbandictionary as ud
 import wikipedia as wp
 import docssearcher as ds
 
+if sys.version < '3':
+    from urllib2 import urlopen
+    from urllib import quote as urlquote
+else:
+    from urllib.request import urlopen
+    from urllib.parse import quote as urlquote
+
 TOKEN = os.environ['botToken']
 Client = discord.Client()
 client = commands.Bot(command_prefix = '!')
 
 client.remove_command('help')
+
+URL_VERSION = 'http://munchii.me/searcher-sam/version.txt'
+URL_CHANGELOG = 'https://munchii.me/searcher-sam/changelog.txt'
 
 # -- EVENTS --
 
@@ -19,6 +29,8 @@ client.remove_command('help')
 async def on_ready ():
     await client.change_presence(game=discord.Game(name='!help'))
     print("Bot's been booted up. Awaiting user interaction")
+    
+    await checkVersion()
 
 # -- COMMANDS
 
@@ -213,6 +225,27 @@ async def stack (ctx, search = ""):
 
   return
 
+@client.command()
+async def updateMsg (version):
+  changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
+    
+  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')  
+    
+  embed_error = discord.Embed(
+    colour = discord.Colour.black()
+  )
+
+  embed_error.set_author(name = 'Uuh! A new update')
+  embed_error.add_field(name = 'Changes:', value = changes, inline = False)
+
+  await client.send_message(channel, embed=embed_error)
+
+async def checkVersion ():
+    version = urlopen(URL_VERSION).read().decode('utf-8')
+    
+    # Check if version is not equal to the current version.
+    
+    await updateMsg.callback(version)
 
 if __name__ == '__main__':
     client.run(TOKEN)
