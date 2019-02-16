@@ -293,7 +293,7 @@ async def stack (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
-        result = so.search(search)
+        #result = so.search(search)
 
         embed_success.set_author(name = 'We found a result')
         embed_success.add_field(name = 'Title:', value = result.title, inline = False)
