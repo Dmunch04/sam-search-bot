@@ -1,6 +1,7 @@
 import os
 import shutil
 import json
+import discord
 from discord.ext import commands
 import urbandictionary as ud
 import wikipedia as wp
