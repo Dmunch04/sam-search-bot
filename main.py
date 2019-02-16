@@ -31,7 +31,7 @@ async def help (ctx):
   )
 
   if 'Staff' in [y.name.lower() for y in sender.roles]:
-    mbed.set_author(name = 'Help')
+    embed.set_author(name = 'Help')
     embed.add_field(name = '!help', value = 'Shows the commands', inline = False)
     embed.add_field(name = '!urban [Search]', value = 'Searches Urban Dictionary for the search item', inline = False)
     embed.add_field(name = '!google [Search]', value = 'Searches Google for the search item [Not working atm]', inline = False)
@@ -42,7 +42,7 @@ async def help (ctx):
 
     await client.send_message(channel, embed=embed)
   else:
-    mbed.set_author(name = 'Help')
+    embed.set_author(name = 'Help')
     embed.add_field(name = '!help', value = 'Shows the commands', inline = False)
     embed.add_field(name = '!urban [Search]', value = 'Searches Urban Dictionary for the search item', inline = False)
     embed.add_field(name = '!google [Search]', value = 'Searches Google for the search item [Not working atm]', inline = False)
