@@ -7,8 +7,7 @@ import urbandictionary as ud
 import wikipedia as wp
 import docssearcher as ds
 
-#TOKEN = os.environ['token']
-TOKEN = 'NTQ2MDA4NDgzNDY4NjczMDI4.D0m94g.Y6sG8dPNPWDjU2oswetdxZy_SuE'
+TOKEN = os.environ['botToken']
 Client = discord.Client()
 client = commands.Bot(command_prefix = '!')
 
