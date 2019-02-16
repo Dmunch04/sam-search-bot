@@ -3,9 +3,7 @@ import shutil
 import json
 from discord.ext import commands
 import urbandictionary as ud
-from google import google
 import wikipedia as wp
-import stackoverflow as so
 import docsearcher as ds
 
 TOKEN = os.environ['token']
