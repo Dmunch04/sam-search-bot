@@ -4,7 +4,7 @@ import json
 from discord.ext import commands
 import urbandictionary as ud
 import wikipedia as wp
-import docsearcher as ds
+#import docsearcher as ds
 
 TOKEN = os.environ['token']
 Client = discord.Client()
