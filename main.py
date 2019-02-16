@@ -7,7 +7,8 @@ import urbandictionary as ud
 import wikipedia as wp
 import docssearcher as ds
 
-TOKEN = os.environ['token']
+#TOKEN = os.environ['token']
+TOKEN = 'NTQ2MDA4NDgzNDY4NjczMDI4.D0mvtA.N_O55Zc0Hhj6X76zgMEi2Wv-zhY'
 Client = discord.Client()
 client = commands.Bot(command_prefix = '!')
 
@@ -99,11 +100,11 @@ async def wiki (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
-        result = wiki.page(search)
+        result = wp.page(search)
 
         embed_success.set_author(name = 'We found a result')
         embed_success.add_field(name = 'Name:', value = result.title, inline = False)
-        embed_success.add_field(name = 'Description:', value = result.content, inline = False)
+        embed_success.add_field(name = 'Description:', value = result.content[:50] + '...', inline = False)
         embed_success.add_field(name = 'Link:', value = result.url, inline = False)
 
         await client.send_message(channel, embed=embed_success)
@@ -190,8 +191,8 @@ async def google (ctx, search = ""):
     colour = discord.Colour.red()
   )
 
-  embed_success.set_author(name = 'Not working')
-  embed_success.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
+  embed_error.set_author(name = 'Not working')
+  embed_error.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
 
   await client.send_message(channel, embed=embed_error)
 
@@ -206,8 +207,8 @@ async def stack (ctx, search = ""):
     colour = discord.Colour.red()
   )
 
-  embed_success.set_author(name = 'Not working')
-  embed_success.add_field(name = 'Google Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
+  embed_error.set_author(name = 'Not working')
+  embed_error.add_field(name = 'Stack Command', value = "Looks like this command is not working. Please be patient and wait for an update!", inline = False)
 
   await client.send_message(channel, embed=embed_error)
 
