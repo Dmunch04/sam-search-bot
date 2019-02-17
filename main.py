@@ -323,7 +323,7 @@ async def roles (ctx):
   channel = ctx.message.channel
 
   embed_info = discord.Embed(
-    colour = discord.Colour.black()
+    colour = 0x2a2a2a
   )
     
   embed_info.set_author(name = 'Roles')
@@ -338,7 +338,7 @@ async def updateMsg ():
   channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'announcements')  
     
   embed_announcement = discord.Embed(
-    colour = discord.Colour.black()
+    colour = 0x2a2a2a
   )
 
   embed_announcement.set_author(name = 'Uuh! A new update (v1.1)')
