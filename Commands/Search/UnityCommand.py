@@ -23,7 +23,7 @@ class CMD_Unity:
     def __init__ (self, client):
         self.client = client
 
-    @client.command(pass_context = True)
+    @commands.command(pass_context = True)
     async def manual (self, ctx, *searchItem):
         sender = ctx.message.author
         channel = ctx.message.channel
@@ -50,7 +50,7 @@ class CMD_Unity:
 
             await self.client.send_message(channel, embed=embed_error)
 
-    @client.command(pass_context = True)
+    @commands.command(pass_context = True)
     async def script (self, ctx, *searchItem):
         sender = ctx.message.author
         channel = ctx.message.channel
