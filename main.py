@@ -254,6 +254,7 @@ async def role (ctx, role = ""):
   server = ctx.message.server
 
   role = role.lower()
+  print(role)
     
   embed_success = discord.Embed(
       colour = discord.Colour.green()
