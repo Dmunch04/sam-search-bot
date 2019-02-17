@@ -52,6 +52,8 @@ async def help (ctx):
     embed.add_field(name = '!stack [Search]', value = 'Searches Stackoveflow for the search item [Not working atm]', inline = False)
     embed.add_field(name = '!manual [Search]', value = 'Searches Unity Manual for the search item', inline = False)
     embed.add_field(name = '!script [Search]', value = 'Searches Unity Script API for the search item', inline = False)
+    embed.add_field(name = '!role [Role]', value = 'Use this command to add a role to yourself', inline = False)
+    embed.add_field(name = '!roles', value = 'Shows you all the roles you can join', inline = False)
 
     await client.send_message(channel, embed=embed)
 
@@ -331,7 +333,7 @@ async def roles (ctx):
 
 @client.command()
 async def updateMsg ():
-  changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
+  #changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
     
   channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'announcements')  
     
