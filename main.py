@@ -366,7 +366,7 @@ async def setSubjectTime ():
         
         time = '%s:%s:%d' % (now.hours, now.minutes, now.seconds)
         
-        await client.edit_channel(channel, topic = )
+        await client.edit_channel(channel, topic = str(time))
         time.sleep(1)
     
 if __name__ == '__main__':
