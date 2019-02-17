@@ -22,7 +22,7 @@ client = commands.Bot(command_prefix = '!')
 client.remove_command('help')
 
 URL_VERSION = 'http://munchii.me/searcher-sam/version.txt'
-URL_CHANGELOG = 'https://munchii.me/searcher-sam/changelog.txt'
+URL_CHANGELOG = 'http://munchii.me/searcher-sam/changelog.txt'
 
 # -- EVENTS --
 
