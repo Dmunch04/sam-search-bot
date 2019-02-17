@@ -253,9 +253,7 @@ async def role (ctx, role = ""):
   channel = ctx.message.channel
   server = ctx.message.server
 
-  print(role)
   role = role.lower()
-  print(role)
     
   embed_success = discord.Embed(
       colour = discord.Colour.green()
@@ -268,7 +266,7 @@ async def role (ctx, role = ""):
   threed = discord.utils.get(server.roles, name="3D Artist")
   twod = discord.utils.get(server.roles, name="2D Artist")
   pixel = discord.utils.get(server.roles, name="Pixel Artist")
-  programmer = discord.utils.get(server.roles, name="Programmer")
+  programmer = discord.utils.get(server.roles, name="Dev")
   musician = discord.utils.get(server.roles, name="Musician")
   writer = discord.utils.get(server.roles, name="Writer")
   voice = discord.utils.get(server.roles, name="voice artist")
@@ -278,18 +276,18 @@ async def role (ctx, role = ""):
     embed_error.set_author(name = 'Error')
     embed_error.add_field(name = 'Specify which role you want:', value = '- 3D Artist\n- 2D Artist\n- Pixel Artist\n- Programmer\n- Musician\n- Writer\n- Voice Artist\n- Indie', inline = False)
     await client.send_message(channel, embed=embed_error)
-  elif role == "3d artist":
+  elif role == "3d":
     print("works")
     await client.add_roles(sender, threed)
     embed_success.set_author(name = 'Role Added')
     embed_success.add_field(name = "Cool! You're a 3D Artist!", value = '', inline = False)
     await client.send_message(channel, embed=embed_success)
-  elif role == "2d artist":
+  elif role == "2d":
     await client.add_roles(sender, twod)
     embed_success.set_author(name = 'Role Added')
     embed_success.add_field(name = "Cool! You're a 2D Artist!", value = '', inline = False)
     await client.send_message(channel, embed=embed_success)
-  elif role == "pixel artist":
+  elif role == "pixel":
     await client.add_roles(sender, pixel)
     embed_success.set_author(name = 'Role Added')
     embed_success.add_field(name = "Cool! You're a Pixel Artist!", value = '', inline = False)
@@ -309,7 +307,7 @@ async def role (ctx, role = ""):
     embed_success.set_author(name = 'Role Added')
     embed_success.add_field(name = "Cool! You're a Writer!", value = '', inline = False)
     await client.send_message(channel, embed=embed_success)
-  elif role == "voice artist":
+  elif role == "voice":
     await client.add_roles(sender, voice)
     embed_success.set_author(name = 'Role Added')
     embed_success.add_field(name = "Cool! You're a Voice Artist Artist!", value = '', inline = False)
