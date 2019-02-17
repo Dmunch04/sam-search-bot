@@ -344,7 +344,7 @@ async def updateMsg ():
   )
 
   embed_announcement.set_author(name = 'Uuh! A new update ({0})'.format(version))
-  embed_error.add_field(name = 'Changes:', value = changes, inline = False)
+  embed_announcement.add_field(name = 'Changes:', value = changes, inline = False)
   #embed_announcement.add_field(name = 'Changes:', value = '- Added a role command\n- Fixed bugs', inline = False)
 
   await client.send_message(channel, embed=embed_announcement)
