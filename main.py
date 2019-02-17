@@ -37,10 +37,6 @@ async def on_ready ():
 
     await checkVersion()
 
-    f = open('currentVersion.txt', 'w')
-    f.write('v1.3')
-    f.close()
-
 # -- COMMANDS
 
 @client.command(pass_context = True)
@@ -268,8 +264,9 @@ async def roles (ctx):
 
 @client.command()
 async def updateMsg ():
-  changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
-  version = urlopen(URL_VERSION).read().decode('utf-8')
+  changesFile = open('changelog.txt', 'r')
+  changes = changesFile.read()
+  changesFile.close()
 
   channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')
 
@@ -279,16 +276,20 @@ async def updateMsg ():
 
   embed_announcement.set_author(name = 'Uuh! A new update ({0})'.format(version))
   embed_announcement.add_field(name = 'Changes:', value = changes, inline = False)
-  #embed_announcement.add_field(name = 'Changes:', value = '- Added a role command\n- Fixed bugs', inline = False)
 
   await client.send_message(channel, embed=embed_announcement)
 
 async def checkVersion ():
-    version = urlopen(URL_VERSION).read().decode('utf-8')
+    newVersionFile = open('newVersion.txt', 'r')
+    newVersion = newVersionFile.read()
+    newVersionFile.close()
 
-    # Check if version is not equal to the current version.
+    curVersionFile = open('currentVersion.txt', 'r')
+    curVersion = curVersionFile.read()
+    curVersionFile.close()
 
-    #await updateMsg.callback()
+    if not curVersion == newVersion:
+        await updateMsg.callback(newVersion)
 
 if __name__ == '__main__':
     for command in commands:

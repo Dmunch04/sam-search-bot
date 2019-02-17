@@ -85,6 +85,8 @@ class CMD_Unity:
         rawData = urlopen(URL_SEARCH + docs + '.json').read().decode('utf-8')
         jsonData = json.loads(rawData)
 
+        print(jsonData[0])
+
         for element in jsonData:
             if search in element['title']:
                 embed_result = discord.Embed(title = element['title'], url = element['link'], description = element['description'])
