@@ -8,3 +8,6 @@ class CMD_About:
     @commands.command(pass_context = True)
     async def about (self, ctx):
         print("works")
+
+def setup (client):
+    client.add_cog(CMD_About(client))

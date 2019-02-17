@@ -12,9 +12,6 @@ else:
 
 URL_SEARCH = 'http://munchii.me/unitydocs/'
 
-embed_success = discord.Embed(
-  color = discord.Color.green()
-)
 embed_error = discord.Embed(
   color = discord.Color.red()
 )
@@ -27,6 +24,10 @@ class CMD_Unity:
     async def manual (self, ctx, *searchItem):
         sender = ctx.message.author
         channel = ctx.message.channel
+
+        embed_error = discord.Embed(
+          color = discord.Color.red()
+        )
 
         search = ""
         for word in searchItem:
@@ -54,6 +55,10 @@ class CMD_Unity:
     async def script (self, ctx, *searchItem):
         sender = ctx.message.author
         channel = ctx.message.channel
+
+        embed_error = discord.Embed(
+          color = discord.Color.red()
+        )
 
         search = ""
         for word in searchItem:
