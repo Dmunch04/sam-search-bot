@@ -26,7 +26,8 @@ client.remove_command('help')
 URL_VERSION = 'http://munchii.me/searcher-sam/version.txt'
 URL_CHANGELOG = 'http://munchii.me/searcher-sam/changelog.txt'
 
-commands = ['AboutCommand', 'ChallengeCommand', 'ChangelogCommand', 'HelpCommand', 'LeaderboardCommand', 'RoleCommand', 'RulesCommand', 'StatsCommand', 'ThanksCommand', 'GoogleCommand', 'StackoveflowCommand', 'UnityCommand', 'UrbanDictionaryCommand', 'WikipediaCommand', 'BanCommand', 'KickCommand', 'MuteCommand']
+#commands = ['AboutCommand', 'ChallengeCommand', 'ChangelogCommand', 'HelpCommand', 'LeaderboardCommand', 'RoleCommand', 'RulesCommand', 'StatsCommand', 'ThanksCommand', 'GoogleCommand', 'StackoveflowCommand', 'UnityCommand', 'UrbanDictionaryCommand', 'WikipediaCommand', 'BanCommand', 'KickCommand', 'MuteCommand']
+commands = ['UnityCommand']
 
 # -- EVENTS --
 
