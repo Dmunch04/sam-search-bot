@@ -84,9 +84,10 @@ class CMD_Unity:
     async def search (self, docs, search, channel):
         rawData = urlopen(URL_SEARCH + docs + '.json').read().decode('utf-8')
         jsonData = json.loads(rawData)
-        print(jsonData)
 
         for element in jsonData:
+            print("Yay")
+            print(element['title'])
             if search in element['title']:
                 print("Got to this")
                 print(element['title'])
