@@ -82,7 +82,8 @@ class CMD_Unity:
             await self.client.send_message(channel, embed=embed_error)
 
     async def search (self, docs, search, channel):
-        rawData = urlopen(URL_SEARCH + self.docs + '.json').read()
+        #rawData = urlopen(URL_SEARCH + docs + '.json').read()
+        rawData = open('Data.UnityDocs_script.json', 'r')
         jsonData = json.loads(rawData)
 
         for element in jsonData:
