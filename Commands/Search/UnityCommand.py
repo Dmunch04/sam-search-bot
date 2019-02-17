@@ -12,10 +12,6 @@ else:
 
 URL_SEARCH = 'http://munchii.me/unitydocs/'
 
-embed_error = discord.Embed(
-  color = discord.Color.red()
-)
-
 class CMD_Unity:
     def __init__ (self, client):
         self.client = client
@@ -65,6 +61,8 @@ class CMD_Unity:
             search += word
             search += " "
 
+        print(search)
+
         if search == "":
           embed_error.set_author(name = 'Error')
           embed_error.add_field(name = 'Specify', value = 'Please specify what you wanna search for!', inline = False)
@@ -75,7 +73,9 @@ class CMD_Unity:
             search = search.replace('[', '')
             search = search.replace(']', '')
 
-            await search('script', search, channel)
+            print(search)
+
+            #await search('script', search, channel)
           except:
             embed_error.set_author(name = 'Error')
             embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
@@ -83,8 +83,12 @@ class CMD_Unity:
             await self.client.send_message(channel, embed=embed_error)
 
     async def search (self, docs, search, channel):
-        rawData = urlopen(URL_SEARCH + docs + '.json').read()
+        url = URL_SEARCH + docs + '.json'
+        print(url)
+        rawData = urlopen(url).read()
+        print(rawData)
         jsonData = json.loads(rawData)
+        print(jsonData)
 
         for element in jsonData:
             if search in element['title']:
