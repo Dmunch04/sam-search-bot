@@ -269,7 +269,7 @@ async def role (ctx, role = ""):
   programmer = discord.utils.get(server.roles, name="Programmer")
   musician = discord.utils.get(server.roles, name="Musician")
   writer = discord.utils.get(server.roles, name="Writer")
-  voice = discord.utils.get(server.roles, name="Voice Artist")
+  voice = discord.utils.get(server.roles, name="voice artist")
   indie = discord.utils.get(server.roles, name="Indie")
 
   if role == "":
@@ -277,6 +277,7 @@ async def role (ctx, role = ""):
     embed_error.add_field(name = 'Specify which role you want:', value = '- 3D Artist\n- 2D Artist\n- Pixel Artist\n- Programmer\n- Musician\n- Writer\n- Voice Artist\n- Indie', inline = False)
     await client.send_message(channel, embed=embed_error)
   elif role == "3d artist":
+    print("works")
     await client.add_roles(sender, threed)
     embed_success.set_author(name = 'Role Added')
     embed_success.add_field(name = "Cool! You're a 3D Artist!", value = '', inline = False)
@@ -333,9 +334,11 @@ async def roles (ctx):
 
 @client.command()
 async def updateMsg ():
-  #changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
+  changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
+
+  print(changes)
     
-  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'announcements')  
+  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')  
     
   embed_announcement = discord.Embed(
     colour = 0x2a2a2a
