@@ -82,15 +82,14 @@ class CMD_Unity:
             await self.client.send_message(channel, embed=embed_error)
 
     async def search (self, docs, search, channel):
-        print(docs)
-        print(search)
-        print(channel)
         rawData = urlopen(URL_SEARCH + docs + '.json').read()
-        print(rawData)
         jsonData = json.loads(rawData)
+        print(jsonData)
 
         for element in jsonData:
             if search in element['title']:
+                print("Got to this")
+                print(element['title'])
                 embed_result = discord.Embed(title = element['title'], url = element['link'], description = element['description'])
                 await self.client.send_message(channel, embed_result)
 
