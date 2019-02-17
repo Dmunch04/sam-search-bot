@@ -37,6 +37,10 @@ async def on_ready ():
 
     await checkVersion()
 
+    f = open('currentVersion.txt', 'w')
+    f.write('v1.3')
+    f.close()
+
 # -- COMMANDS
 
 @client.command(pass_context = True)

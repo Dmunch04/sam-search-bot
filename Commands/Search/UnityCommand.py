@@ -86,9 +86,7 @@ class CMD_Unity:
         jsonData = json.loads(rawData)
 
         for element in jsonData:
-            title = element['title']
-            if search in title:
-                print(str(element['title']))
+            if search in element['title']:
                 embed_result = discord.Embed(title = element['title'], url = element['link'], description = element['description'])
                 await self.client.send_message(channel, embed_result)
 
