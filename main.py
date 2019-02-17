@@ -335,8 +335,7 @@ async def roles (ctx):
 @client.command()
 async def updateMsg ():
   changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
-
-  print(changes)
+  version = urlopen(URL_VERSION).read().decode('utf-8')
     
   channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')  
     
@@ -344,9 +343,9 @@ async def updateMsg ():
     colour = 0x2a2a2a
   )
 
-  embed_announcement.set_author(name = 'Uuh! A new update (v1.1)')
-  #embed_error.add_field(name = 'Changes:', value = changes, inline = False)
-  embed_announcement.add_field(name = 'Changes:', value = '- Added a role command\n- Fixed bugs', inline = False)
+  embed_announcement.set_author(name = 'Uuh! A new update ({0})'.format(version))
+  embed_error.add_field(name = 'Changes:', value = changes, inline = False)
+  #embed_announcement.add_field(name = 'Changes:', value = '- Added a role command\n- Fixed bugs', inline = False)
 
   await client.send_message(channel, embed=embed_announcement)
 
