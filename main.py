@@ -253,6 +253,7 @@ async def role (ctx, role = ""):
   channel = ctx.message.channel
   server = ctx.message.server
 
+  print(role)
   role = role.lower()
   print(role)
     
