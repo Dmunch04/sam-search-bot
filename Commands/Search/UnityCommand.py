@@ -73,6 +73,9 @@ class CMD_Unity:
 
             await self.search('script', search, channel)
           except:
+            e = sys.exc_info()[0]
+            print(e)
+
             embed_error.set_author(name = 'Error')
             embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
 
