@@ -75,10 +75,20 @@ async def urban (ctx, search = ""):
     await client.send_message(channel, embed=embed_error)
   else:
     try:
+      search = search.replace('[', '')
+      search = search.replace(']', '')
+        
       definitions = ud.define(search)
 
       definition = definitions[0]
 
+      definition.word = definition.word.replace('[', '')
+      definition.word = definition.word.replace(']', '')
+      definition.definition = definition.definition.replace('[', '')
+      definition.definition = definition.definition.replace(']', '')
+      definition.example = definition.example.replace('[', '')
+      definition.example = definition.example.replace(']', '')
+        
       embed_success.set_author(name = 'I found a result')
       embed_success.add_field(name = 'Searched word:', value = definition.word, inline = False)
       embed_success.add_field(name = 'Definition:', value = definition.definition, inline = False)
@@ -112,6 +122,9 @@ async def wiki (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
+        search = search.replace('[', '')
+        search = search.replace(']', '')
+        
         result = wp.page(search)
 
         embed_success.set_author(name = 'I found a result')
@@ -146,6 +159,9 @@ async def manual (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
+        search = search.replace('[', '')
+        search = search.replace(']', '')
+        
         result = ds.search(search, "manual")
 
         embed_success.set_author(name = 'I found a result')
@@ -180,6 +196,9 @@ async def script (ctx, search = ""):
       await client.send_message(channel, embed=embed_error)
     else:
       try:
+        search = search.replace('[', '')
+        search = search.replace(']', '')
+        
         result = ds.search(search, "script")
 
         embed_success.set_author(name = 'I found a result')
@@ -226,27 +245,112 @@ async def stack (ctx, search = ""):
 
   return
 
+@client.command(pass_context = True)
+async def role (ctx, role = ""):
+  sender = ctx.message.author
+  channel = ctx.message.channel
+  server = ctx.message.server
+
+  role = role.lower()
+    
+  embed_success = discord.Embed(
+      colour = discord.Colour.green()
+    )
+
+  embed_error = discord.Embed(
+    colour = discord.Colour.red()
+  )
+
+  threed = discord.utils.get(server.roles, name="3D Artist")
+  twod = discord.utils.get(server.roles, name="2D Artist")
+  pixel = discord.utils.get(server.roles, name="Pixel Artist")
+  programmer = discord.utils.get(server.roles, name="Programmer")
+  musician = discord.utils.get(server.roles, name="Musician")
+  writer = discord.utils.get(server.roles, name="Writer")
+  voice = discord.utils.get(server.roles, name="Voice Artist")
+  indie = discord.utils.get(server.roles, name="Indie")
+
+  if role == "":
+    embed_error.set_author(name = 'Error')
+    embed_error.add_field(name = 'Specify which role you want:', value = '- 3D Artist\n- 2D Artist\n- Pixel Artist\n- Programmer\n- Musician\n- Writer\n- Voice Artist\n- Indie', inline = False)
+    await client.send_message(channel, embed=embed_error)
+  elif role == "3d artist":
+    await client.add_roles(sender, threed)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a 3D Artist!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "2d artist":
+    await client.add_roles(sender, twod)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a 2D Artist!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "pixel artist":
+    await client.add_roles(sender, pixel)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a Pixel Artist!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "programmer":
+    await client.add_roles(sender, programmer)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a Programmer!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "musician":
+    await client.add_roles(sender, musician)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a Musician!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "writer":
+    await client.add_roles(sender, writer)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a Writer!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "voice artist":
+    await client.add_roles(sender, voice)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're a Voice Artist Artist!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+  elif role == "indie":
+    await client.add_roles(sender, indie)
+    embed_success.set_author(name = 'Role Added')
+    embed_success.add_field(name = "Cool! You're an Indie!", value = '', inline = False)
+    await client.send_message(channel, embed=embed_success)
+
+@client.command(pass_context = True)
+async def roles (ctx):
+  sender = ctx.message.author
+  channel = ctx.message.channel
+
+  embed_info = discord.Embed(
+    colour = discord.Colour.black()
+  )
+    
+  embed_info.set_author(name = 'Roles')
+  embed_info.add_field(name = 'These are the roles you can join:', value = '- 3D Artist\n- 2D Artist\n- Pixel Artist\n- Programmer\n- Musician\n- Writer\n- Voice Artist\n- Indie', inline = False)
+  
+  await client.send_message(channel, embed=embed_info)
+
 @client.command()
-async def updateMsg (version):
+async def updateMsg ():
   changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
     
-  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')  
+  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'announcements')  
     
-  embed_error = discord.Embed(
+  embed_announcement = discord.Embed(
     colour = discord.Colour.black()
   )
 
-  embed_error.set_author(name = 'Uuh! A new update')
-  embed_error.add_field(name = 'Changes:', value = changes, inline = False)
+  embed_announcement.set_author(name = 'Uuh! A new update (v1.1)')
+  #embed_error.add_field(name = 'Changes:', value = changes, inline = False)
+  embed_announcement.add_field(name = 'Changes:', value = '- Added a role command\n- Fixed bugs', inline = False)
 
-  await client.send_message(channel, embed=embed_error)
+  await client.send_message(channel, embed=embed_announcement)
 
 async def checkVersion ():
     version = urlopen(URL_VERSION).read().decode('utf-8')
     
     # Check if version is not equal to the current version.
     
-    await updateMsg.callback(version)
+    await updateMsg.callback()
 
 if __name__ == '__main__':
     client.run(TOKEN)
