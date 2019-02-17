@@ -34,6 +34,7 @@ async def on_ready ():
     print("Bot's been booted up. Awaiting user interaction")
     
     await checkVersion()
+    await setSubjectTime()
 
 # -- COMMANDS
 
