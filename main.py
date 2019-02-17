@@ -314,7 +314,7 @@ async def role (ctx, role = ""):
   elif role == "indie":
     await client.add_roles(sender, indie)
     embed_success.set_author(name = 'Role Added')
-    embed_success.add_field(name = "Cool! You're an Indie!", value = '', inline = False)
+    embed_success.add_field(name = "Cool! You're an Indie!", value = 'Yay', inline = False)
     await client.send_message(channel, embed=embed_success)
 
 @client.command(pass_context = True)
@@ -352,7 +352,7 @@ async def checkVersion ():
     
     # Check if version is not equal to the current version.
     
-    await updateMsg.callback()
+    #await updateMsg.callback()
 
 if __name__ == '__main__':
     client.run(TOKEN)
