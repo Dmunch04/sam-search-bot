@@ -2,6 +2,8 @@ import sys
 import os
 import shutil
 import json
+import time
+import datetime
 import discord
 from discord.ext import commands
 import urbandictionary as ud
@@ -356,5 +358,16 @@ async def checkVersion ():
     
     #await updateMsg.callback()
 
+async def setSubjectTime ():
+    while True:
+        channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'botcommands')
+
+        now = datetime.datetime.now()
+        
+        time = '%s:%s:%d' % (now.hours, now.minutes, now.seconds)
+        
+        await client.edit_channel(channel, topic = )
+        time.sleep(1)
+    
 if __name__ == '__main__':
     client.run(TOKEN)
