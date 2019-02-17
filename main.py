@@ -26,13 +26,15 @@ client.remove_command('help')
 URL_VERSION = 'http://munchii.me/searcher-sam/version.txt'
 URL_CHANGELOG = 'http://munchii.me/searcher-sam/changelog.txt'
 
+commands = ['AboutCommand', 'ChallengeCommand', 'ChangelogCommand', 'HelpCommand', 'LeaderboardCommand', 'RoleCommand', 'RulesCommand', 'StatsCommand', 'ThanksCommand', 'GoogleCommand', 'StackoveflowCommand', 'UnityCommand', 'UrbanDictionaryCommand', 'WikipediaCommand', 'BanCommand', 'KickCommand', 'MuteCommand']
+
 # -- EVENTS --
 
 @client.event
 async def on_ready ():
     await client.change_presence(game=discord.Game(name='!help'))
     print("Bot's been booted up. Awaiting user interaction")
-    
+
     await checkVersion()
     await setSubjectTime()
 
@@ -46,7 +48,7 @@ async def help (ctx):
     embed = discord.Embed(
         colour = discord.Colour.purple()
     )
-    
+
     embed.set_author(name = 'Help')
     embed.add_field(name = '!help', value = 'Shows the commands', inline = False)
     embed.add_field(name = '!urban [Search]', value = 'Searches Urban Dictionary for the search item', inline = False)
@@ -82,7 +84,7 @@ async def urban (ctx, search = ""):
     try:
       search = search.replace('[', '')
       search = search.replace(']', '')
-        
+
       definitions = ud.define(search)
 
       definition = definitions[0]
@@ -93,7 +95,7 @@ async def urban (ctx, search = ""):
       definition.definition = definition.definition.replace(']', '')
       definition.example = definition.example.replace('[', '')
       definition.example = definition.example.replace(']', '')
-        
+
       embed_success.set_author(name = 'I found a result')
       embed_success.add_field(name = 'Searched word:', value = definition.word, inline = False)
       embed_success.add_field(name = 'Definition:', value = definition.definition, inline = False)
@@ -129,86 +131,12 @@ async def wiki (ctx, search = ""):
       try:
         search = search.replace('[', '')
         search = search.replace(']', '')
-        
+
         result = wp.page(search)
 
         embed_success.set_author(name = 'I found a result')
         embed_success.add_field(name = 'Name:', value = result.title, inline = False)
         embed_success.add_field(name = 'Description:', value = result.content[:50] + '...', inline = False)
-        embed_success.add_field(name = 'Link:', value = result.url, inline = False)
-
-        await client.send_message(channel, embed=embed_success)
-      except:
-        embed_error.set_author(name = 'Error')
-        embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
-
-        await client.send_message(channel, embed=embed_error)
-
-@client.command(pass_context = True)
-async def manual (ctx, search = ""):
-    sender = ctx.message.author
-    channel = ctx.message.channel
-
-    embed_success = discord.Embed(
-      colour = discord.Colour.green()
-    )
-
-    embed_error = discord.Embed(
-      colour = discord.Colour.red()
-    )
-
-    if search == "":
-      embed_error.set_author(name = 'Error')
-      embed_error.add_field(name = 'Specify', value = 'Please specify what you wanna search for!', inline = False)
-
-      await client.send_message(channel, embed=embed_error)
-    else:
-      try:
-        search = search.replace('[', '')
-        search = search.replace(']', '')
-        
-        result = ds.search(search, "manual")
-
-        embed_success.set_author(name = 'I found a result')
-        embed_success.add_field(name = 'Name:', value = result.title, inline = False)
-        embed_success.add_field(name = 'Description :', value = result.description, inline = False)
-        embed_success.add_field(name = 'Link:', value = result.url, inline = False)
-
-        await client.send_message(channel, embed=embed_success)
-      except:
-        embed_error.set_author(name = 'Error')
-        embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
-
-        await client.send_message(channel, embed=embed_error)
-
-@client.command(pass_context = True)
-async def script (ctx, search = ""):
-    sender = ctx.message.author
-    channel = ctx.message.channel
-
-    embed_success = discord.Embed(
-      colour = discord.Colour.green()
-    )
-
-    embed_error = discord.Embed(
-      colour = discord.Colour.red()
-    )
-
-    if search == "":
-      embed_error.set_author(name = 'Error')
-      embed_error.add_field(name = 'Specify', value = 'Please specify what you wanna search for!', inline = False)
-
-      await client.send_message(channel, embed=embed_error)
-    else:
-      try:
-        search = search.replace('[', '')
-        search = search.replace(']', '')
-        
-        result = ds.search(search, "script")
-
-        embed_success.set_author(name = 'I found a result')
-        embed_success.add_field(name = 'Name:', value = result.title, inline = False)
-        embed_success.add_field(name = 'Description :', value = result.description, inline = False)
         embed_success.add_field(name = 'Link:', value = result.url, inline = False)
 
         await client.send_message(channel, embed=embed_success)
@@ -257,7 +185,7 @@ async def role (ctx, role = ""):
   server = ctx.message.server
 
   role = role.lower()
-    
+
   embed_success = discord.Embed(
       colour = discord.Colour.green()
     )
@@ -329,19 +257,19 @@ async def roles (ctx):
   embed_info = discord.Embed(
     colour = 0x2a2a2a
   )
-    
+
   embed_info.set_author(name = 'Roles')
   embed_info.add_field(name = 'These are the roles you can join:', value = '- 3D Artist\n- 2D Artist\n- Pixel Artist\n- Programmer\n- Musician\n- Writer\n- Voice Artist\n- Indie', inline = False)
-  
+
   await client.send_message(channel, embed=embed_info)
 
 @client.command()
 async def updateMsg ():
   changes = urlopen(URL_CHANGELOG).read().decode('utf-8')
   version = urlopen(URL_VERSION).read().decode('utf-8')
-    
-  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')  
-    
+
+  channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'bot-updates')
+
   embed_announcement = discord.Embed(
     colour = 0x2a2a2a
   )
@@ -354,21 +282,16 @@ async def updateMsg ():
 
 async def checkVersion ():
     version = urlopen(URL_VERSION).read().decode('utf-8')
-    
+
     # Check if version is not equal to the current version.
-    
+
     #await updateMsg.callback()
 
-async def setSubjectTime ():
-    while True:
-        channel = discord.utils.get(client.get_all_channels(), server__name = 'Make Indies', name = 'botcommands')
-
-        now = datetime.datetime.now()
-        
-        timeToSet = '%s:%s:%d' % (now.hour, now.minute, now.second)
-        
-        await client.edit_channel(channel, topic = str(timeToSet))
-        time.sleep(1)
-    
 if __name__ == '__main__':
+    for command in commands:
+        try:
+            client.load_extension(command)
+        except Exception as error:
+            print('{0} cannot be loaded. Error: {0}'.format(command, error))
+
     client.run(TOKEN)
