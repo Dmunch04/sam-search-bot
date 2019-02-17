@@ -61,8 +61,6 @@ class CMD_Unity:
             search += word
             search += " "
 
-        await self.search('script', search, channel)
-
         if search == "":
           embed_error.set_author(name = 'Error')
           embed_error.add_field(name = 'Specify', value = 'Please specify what you wanna search for!', inline = False)
@@ -84,8 +82,11 @@ class CMD_Unity:
             await self.client.send_message(channel, embed=embed_error)
 
     async def search (self, docs, search, channel):
-        print("Works so far")
+        print(docs)
+        print(search)
+        print(channel)
         rawData = urlopen(URL_SEARCH + docs + '.json').read()
+        print(rawData)
         jsonData = json.loads(rawData)
 
         for element in jsonData:
