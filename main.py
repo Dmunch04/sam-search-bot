@@ -263,7 +263,7 @@ async def roles (ctx):
   await client.send_message(channel, embed=embed_info)
 
 @client.command()
-async def updateMsg ():
+async def updateMsg (version):
   changesFile = open('changelog.txt', 'r')
   changes = changesFile.read()
   changesFile.close()
