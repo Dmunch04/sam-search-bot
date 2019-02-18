@@ -37,7 +37,7 @@ class CMD_Update:
             curVersionFile.close()
 
     async def checkVersion ():
-        newVersionFile = open('newVersion.txt', 'r')
+        newVersionFile = open('Commands.Staff.newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
 
