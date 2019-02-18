@@ -19,25 +19,25 @@ class CMD_Update:
         newVersion = newVersionFile.read()
         newVersionFile.close()
 
-        curVersionFile = open('Data.currentVersion.txt', 'r')
+        curVersionFile = open('currentVersion.txt', 'r')
         curVersion = curVersionFile.read()
         curVersionFile.close()
 
         if curVersion == newVersion:
             return
         else:
-            changelogFile = open('Data.changelog.txt', 'r')
+            changelogFile = open('changelog.txt', 'r')
             changes = changelogFile.read()
             changelogFile.close()
 
             await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(version), changes, channel)
 
-            curVersionFile = open('Data.currentVersion.txt', 'w')
+            curVersionFile = open('currentVersion.txt', 'w')
             curVersionFile.write(newVersion)
             curVersionFile.close()
 
     async def checkVersion ():
-        newVersionFile = open('Data.newVersion.txt', 'r')
+        newVersionFile = open('newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
 
