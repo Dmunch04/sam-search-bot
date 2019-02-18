@@ -1,3 +1,4 @@
+import os
 import discord
 from Commands.Staff.UpdateCommand import CMD_Update
 
