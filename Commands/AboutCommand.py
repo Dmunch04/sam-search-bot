@@ -9,7 +9,7 @@ class CMD_About:
     @commands.command(pass_context = True)
     async def about (self, ctx):
         channel = ctx.message.channel
-        await embed.ResultEmbed(self.client, "Title", "Content", "https://google.com", channel)
+        await embed.OtherEmbed(self.client, 'About', 'About me, Boto', "Hello guys! My name is Boto. I'm the helper of Make Indies. My best buddy, Munchii, is the one that learned me everything I know. The important thing: I'm always here to help. To get my help, do !help", discord.Color.blue(), channel)
 
 def setup (client):
     client.add_cog(CMD_About(client))
