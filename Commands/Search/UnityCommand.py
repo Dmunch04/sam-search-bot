@@ -3,7 +3,7 @@ import json
 import discord
 from discord.ext import commands
 import docssearcher as ds
-#import EmbedHelper as embed
+from Helpers import EmbedHelper as embed
 
 class CMD_Unity:
     def __init__ (self, client):
@@ -36,7 +36,7 @@ class CMD_Unity:
             searchResult = ds.search(search, 'manual')
             print(searchResult)
 
-            #await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
+            await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
           except:
             embed_error.set_author(name = 'Error')
             embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
@@ -72,6 +72,9 @@ class CMD_Unity:
 
             #await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
           except:
+            e = sys.exc_info()[0]
+            print(e)
+
             embed_error.set_author(name = 'Error')
             embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
 
