@@ -288,11 +288,10 @@ async def checkVersion ():
     curVersion = curVersionFile.read()
     curVersionFile.close()
 
-    print(newVersion)
-    print(curVersion)
-
     if not curVersion == newVersion:
         #await updateMsg.callback(newVersion)
+        print(newVersion)
+        print(curVersion)
 
 if __name__ == '__main__':
     for command in commands:
