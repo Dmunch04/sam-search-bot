@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from Helpers import EmbedHelper as embed
+from Helpers import ServerHelper as serverHelper
 
 class CMD_Role:
     def __init__ (self, client):
@@ -16,6 +17,8 @@ class CMD_Role:
             role += " "
 
         role = role.lower()
+
+        server = serverHelper.get_server()
 
         threed = discord.utils.get(server.roles, name="3D Artist")
         twod = discord.utils.get(server.roles, name="2D Artist")

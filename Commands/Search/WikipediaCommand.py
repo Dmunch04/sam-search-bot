@@ -24,6 +24,7 @@ class CMD_Wikipedia:
             search = search.replace(']', '')
 
             result = wp.page(search)
+            print(result)
 
             await embed.ResultEmbed(self.client, result.title, result.content[:50] + '...', result.url, channel)
           except:

@@ -8,6 +8,8 @@ class CMD_Help:
 
     @commands.command(pass_context = True)
     async def help (self, ctx):
+        channel = ctx.author.channel
+
         await embed.HelpEmbed(self.client, channel)
 
 def setup (client):

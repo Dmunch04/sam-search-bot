@@ -10,7 +10,7 @@ class CMD_Stackoverflow:
     async def stack (self, ctx, *searchItem):
         channel = ctx.message.channel
 
-        await embed.CustomErrorEmbed(self.client, 'Command Error', 'Stack Command', 'Whoops! Looks like this command is under maintenance :(')
+        await embed.CustomErrorEmbed(self.client, 'Command Error', 'Stack Command', 'Whoops! Looks like this command is under maintenance :(', channel)
 
         return
 
