@@ -3,7 +3,7 @@ import json
 import discord
 from discord.ext import commands
 import docssearcher as ds
-import EmbedHelper as embed
+#import EmbedHelper as embed
 
 class CMD_Unity:
     def __init__ (self, client):
