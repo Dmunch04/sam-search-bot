@@ -2,15 +2,8 @@ import sys
 import json
 import discord
 from discord.ext import commands
-
-if sys.version < '3':
-    from urllib2 import urlopen
-    from urllib import quote as urlquote
-else:
-    from urllib.request import urlopen
-    from urllib.parse import quote as urlquote
-
-URL_SEARCH = 'http://munchii.me/unitydocs/'
+import docssearcher as ds
+import EmbedHelper as embed
 
 class CMD_Unity:
     def __init__ (self, client):
@@ -40,7 +33,9 @@ class CMD_Unity:
             search = search.replace('[', '')
             search = search.replace(']', '')
 
-            await self.search('manual', search, channel)
+            searchResult = ds.search(search, 'manual')
+
+            await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
           except:
             embed_error.set_author(name = 'Error')
             embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
@@ -71,16 +66,16 @@ class CMD_Unity:
             search = search.replace('[', '')
             search = search.replace(']', '')
 
-            await self.search('script', search, channel)
-          except:
-            e = sys.exc_info()[0]
-            print(e)
+            searchResult = ds.search(search, 'script')
 
+            await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
+          except:
             embed_error.set_author(name = 'Error')
             embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
 
             await self.client.send_message(channel, embed=embed_error)
 
+    # Acrhived command (Fix this later [The if statement never activates for some reason])
     async def search (self, docs, search, channel):
         rawData = urlopen(URL_SEARCH + docs + '.json').read().decode('utf-8')
         jsonData = json.loads(rawData)
