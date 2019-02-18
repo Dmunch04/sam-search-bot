@@ -9,7 +9,7 @@ class CMD_About:
     @commands.command(pass_context = True)
     async def about (self, ctx):
         channel = ctx.message.channel
-        await embed.ResultEmbed("Title", "Content", "https://google.com", channel)
+        await embed.ResultEmbed(self.client, "Title", "Content", "https://google.com", channel)
 
 def setup (client):
     client.add_cog(CMD_About(client))
