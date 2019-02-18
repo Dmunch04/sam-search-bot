@@ -15,7 +15,7 @@ class CMD_Update:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
             return
 
-        newVersionFile = open('Data.newVersion.txt', 'r')
+        newVersionFile = open('newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
 
