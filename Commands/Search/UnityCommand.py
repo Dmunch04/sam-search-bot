@@ -14,20 +14,13 @@ class CMD_Unity:
         sender = ctx.message.author
         channel = ctx.message.channel
 
-        embed_error = discord.Embed(
-          color = discord.Color.red()
-        )
-
         search = ""
         for word in searchItem:
             search += word
             search += " "
 
         if search == "":
-          embed_error.set_author(name = 'Error')
-          embed_error.add_field(name = 'Specify', value = 'Please specify what you wanna search for!', inline = False)
-
-          await self.client.send_message(channel, embed=embed_error)
+          await embed.SpecifyErrorEmbed(self.client, channel)
         else:
           try:
             search = search.replace('[', '')
@@ -38,19 +31,15 @@ class CMD_Unity:
 
             await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
           except:
-            embed_error.set_author(name = 'Error')
-            embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
-
-            await self.client.send_message(channel, embed=embed_error)
+            await embed.UnknownErrorEmbed(self.client, channel)
 
     @commands.command(pass_context = True)
     async def script (self, ctx, *searchItem):
         sender = ctx.message.author
         channel = ctx.message.channel
 
-        embed_error = discord.Embed(
-          color = discord.Color.red()
-        )
+        searchResult = ds.search(search, 'script')
+        print(searchResult)
 
         search = ""
         for word in searchItem:
@@ -58,10 +47,7 @@ class CMD_Unity:
             search += " "
 
         if search == "":
-          embed_error.set_author(name = 'Error')
-          embed_error.add_field(name = 'Specify', value = 'Please specify what you wanna search for!', inline = False)
-
-          await self.client.send_message(channel, embed=embed_error)
+          await embed.SpecifyErrorEmbed(self.client, channel)
         else:
           try:
             search = search.replace('[', '')
@@ -70,15 +56,9 @@ class CMD_Unity:
             searchResult = ds.search(search, 'script')
             print(searchResult)
 
-            #await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
+            await embed.ResultEmbed(searchResult.title, result.description, result.url, channel)
           except:
-            e = sys.exc_info()[0]
-            print(e)
-
-            embed_error.set_author(name = 'Error')
-            embed_error.add_field(name = 'Something went wrong..', value = "Looks like you did something wrong, or the page doesn't exist? ¯\_(ツ)_/¯", inline = False)
-
-            await self.client.send_message(channel, embed=embed_error)
+            await embed.UnknownErrorEmbed(self.client, channel)
 
     # Acrhived command (Fix this later [The if statement never activates for some reason])
     async def search (self, docs, search, channel):

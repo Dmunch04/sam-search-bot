@@ -17,6 +17,10 @@ class CMD_UrbanDictionary:
             search += word
             search += " "
 
+        definitions = ud.define(search)
+        definition = definitions[0]
+        print(definition)
+
         if search == "":
           await embed.SpecifyErrorEmbed(self.client, channel)
         else:

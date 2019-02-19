@@ -16,6 +16,9 @@ class CMD_Wikipedia:
             search += word
             search += " "
 
+        result = wp.page(search)
+        print(result)
+
         if search == "":
           await embed.SpecifyErrorEmbed(self.client, channel)
         else:
