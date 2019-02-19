@@ -27,9 +27,8 @@ class CMD_Unity:
             search = search.replace(']', '')
 
             searchResult = ds.search(search, 'manual')
-            print(searchResult)
 
-            await embed.ResultLinkEmbed(searchResult.title, result.description, result.url, channel)
+            await embed.ResultLinkEmbed(self.client, searchResult.title, result.description, result.url, channel)
           except:
             await embed.UnknownErrorEmbed(self.client, channel)
 
@@ -43,9 +42,6 @@ class CMD_Unity:
             search += word
             search += " "
 
-        searchResult = ds.search(search, 'script')
-        print(searchResult)
-
         if search == "":
           await embed.SpecifyErrorEmbed(self.client, channel)
         else:
@@ -54,9 +50,8 @@ class CMD_Unity:
             search = search.replace(']', '')
 
             searchResult = ds.search(search, 'script')
-            print(searchResult)
 
-            await embed.ResultLinkEmbed(searchResult.title, result.description, result.url, channel)
+            await embed.ResultLinkEmbed(self.client, searchResult.title, result.description, result.url, channel)
           except:
             await embed.UnknownErrorEmbed(self.client, channel)
 
