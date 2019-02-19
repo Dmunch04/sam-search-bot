@@ -1,3 +1,0 @@
-- Complete rewrite of the bot
-- Added many new commands
-- Version checking

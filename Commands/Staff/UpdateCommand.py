@@ -15,29 +15,29 @@ class CMD_Update:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
             return
 
-        newVersionFile = open('newVersion.txt', 'r')
+        newVersionFile = open('Data.newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
 
-        curVersionFile = open('currentVersion.txt', 'r')
+        curVersionFile = open('Data.currentVersion.txt', 'r')
         curVersion = curVersionFile.read()
         curVersionFile.close()
 
         if curVersion == newVersion:
             return
         else:
-            changelogFile = open('changelog.txt', 'r')
+            changelogFile = open('Data.changelog.txt', 'r')
             changes = changelogFile.read()
             changelogFile.close()
 
             await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(version), changes, channel)
 
-            curVersionFile = open('currentVersion.txt', 'w')
+            curVersionFile = open('Data.currentVersion.txt', 'w')
             curVersionFile.write(newVersion)
             curVersionFile.close()
 
     async def checkVersion ():
-        newVersionFile = open('Commands.Staff.newVersion.txt', 'r')
+        newVersionFile = open('Data.newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
 
