@@ -42,6 +42,8 @@ class CMD_Unity:
             search += word
             search += " "
 
+        print(search)
+
         searchResult = ds.search(search, 'script')
 
         await embed.ResultLinkEmbed(self.client, searchResult.title, result.description, result.url, channel)
