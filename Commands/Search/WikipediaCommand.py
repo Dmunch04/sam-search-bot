@@ -16,18 +16,14 @@ class CMD_Wikipedia:
             search += word
             search += " "
 
-        result = wp.page(search)
-        print(result)
-
         if search == "":
           await embed.SpecifyErrorEmbed(self.client, channel)
         else:
           try:
-            search = search.replace('[', '')
-            search = search.replace(']', '')
+            #search = search.replace('[', '')
+            #search = search.replace(']', '')
 
             result = wp.page(search)
-            print(result)
 
             await embed.ResultEmbed(self.client, result.title, result.content[:50] + '...', result.url, channel)
           except:
