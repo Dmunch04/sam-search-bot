@@ -21,8 +21,8 @@ class CMD_UrbanDictionary:
           await embed.SpecifyErrorEmbed(self.client, channel)
         else:
           try:
-            #search = search.replace('[', '')
-            #search = search.replace(']', '')
+            search = search.replace('[', '')
+            search = search.replace(']', '')
 
             definitions = ud.define(search)
 
@@ -35,7 +35,7 @@ class CMD_UrbanDictionary:
             definition.example = definition.example.replace('[', '')
             definition.example = definition.example.replace(']', '')
 
-            await embed.SpecifyErrorEmbed(self.client, definition.word, definition.definition, definition.example, definition.upvotes, definition.downvotes, channel)
+            await embed.ResultLinkEmbed(self.client, definition.word, definition.definition, definition.example, definition.upvotes, definition.downvotes, channel)
           except:
             await embed.UnknownErrorEmbed(self.client, channel)
 
