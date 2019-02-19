@@ -35,7 +35,7 @@ class CMD_UrbanDictionary:
             definition.example = definition.example.replace('[', '')
             definition.example = definition.example.replace(']', '')
 
-            await embed.ResultLinkEmbed(self.client, definition.word, definition.definition, definition.example, definition.upvotes, definition.downvotes, channel)
+            await embed.UrbanEmbed(self.client, definition.word, definition.definition, definition.example, definition.upvotes, definition.downvotes, channel)
           except:
             await embed.UnknownErrorEmbed(self.client, channel)
 
