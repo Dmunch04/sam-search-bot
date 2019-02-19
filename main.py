@@ -9,7 +9,7 @@ client = commands.Bot(command_prefix = '!')
 
 client.remove_command('help')
 
-commands = ['Commands.AboutCommand', 'Commands.ChallengeCommand', 'Commands.ChangelogCommand', 'Commands.HelpCommand', 'Commands.LeaderboardCommand', 'Commands.RoleCommand', 'Commands.RulesCommand', 'Commands.StatsCommand', 'Commands.ThanksCommand', 'Commands.Search.GoogleCommand', 'Commands.Search.StackoveflowCommand', 'Commands.Search.UnityCommand', 'Commands.Search.UrbanDictionaryCommand', 'Commands.Search.WikipediaCommand', 'Commands.Staff.BanCommand', 'Commands.Staff.KickCommand', 'Commands.Staff.MuteCommand', 'Commands.Staff.UpdateCommand']
+commands = ['Commands.AboutCommand', 'Commands.ChallengeCommand', 'Commands.ChangelogCommand', 'Commands.HelpCommand', 'Commands.LeaderboardCommand', 'Commands.RoleCommand', 'Commands.RulesCommand', 'Commands.StatsCommand', 'Commands.ThanksCommand', 'Commands.Search.GoogleCommand', 'Commands.Search.StackoverflowCommand', 'Commands.Search.UnityCommand', 'Commands.Search.UrbanDictionaryCommand', 'Commands.Search.WikipediaCommand', 'Commands.Staff.BanCommand', 'Commands.Staff.KickCommand', 'Commands.Staff.MuteCommand', 'Commands.Staff.UpdateCommand']
 
 @client.event
 async def on_ready ():
