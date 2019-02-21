@@ -29,14 +29,18 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await update.callback(self, newVersion)
+            await update.callback(newVersion)
 
     async def updateBot (version):
+        newVersionFile = open('Data/newVersion.txt', 'r')
+        newVersion = newVersionFile.read()
+        newVersionFile.close()
+
         changelogFile = open('Data/changelog.txt', 'r')
         changes = changelogFile.read()
         changelogFile.close()
 
-        await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(version), changes, channel)
+        await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(newVersion), changes, channel)
 
         curVersionFile = open('Data/currentVersion.txt', 'w')
         curVersionFile.write(newVersion)
