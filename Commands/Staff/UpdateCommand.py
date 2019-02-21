@@ -31,7 +31,7 @@ class CMD_Update:
         else:
             await update.callback()
 
-    async def updateBot ():
+    async def updateBot (self):
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
