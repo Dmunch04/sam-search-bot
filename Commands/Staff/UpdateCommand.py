@@ -29,7 +29,7 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await self.update.callback()
+            await self.update.callback(self)
 
     async def updateBot (self):
         #channel = shelp.get_channel(server, 'bot-updates')
