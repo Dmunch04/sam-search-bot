@@ -6,10 +6,13 @@ from Helpers import ServerHelper as shelp
 class CMD_Update:
     def __init__ (self, client):
         self.client = client
+        await runMe()
+        self.runMeAswell()
         await self.checkVersion()
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
+        author = ctx.message.author
         server = shelp.get_server(ctx)
 
         if not 'bot dev' in [y.name.lower() for y in author.roles]:
@@ -19,6 +22,8 @@ class CMD_Update:
         await self.updateBot(server)
 
     async def checkVersion (self):
+        print('Works')
+
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
@@ -48,6 +53,12 @@ class CMD_Update:
         curVersionFile = open('Data/currentVersion.txt', 'w')
         curVersionFile.write(newVersion)
         curVersionFile.close()
+
+        def runMeAswell (self):
+            print('Worksss!')
+
+async def runMe ():
+    print('Works')
 
 def setup (client):
     client.add_cog(CMD_Update(client))
