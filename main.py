@@ -2,6 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from Commands.Staff.UpdateCommand import CMD_Update
+from Data import testfile.txt
 
 TOKEN = os.environ['botToken']
 Client = discord.Client()
@@ -17,6 +18,12 @@ async def on_ready ():
     print("Bot's been booted up. Awaiting user interaction")
 
     await CMD_Update.checkVersion()
+
+    f = open('Data.testfile.txt', 'r')
+    content = f.read()
+    f.close()
+
+    print(content)
 
 if __name__ == '__main__':
     for command in commands:
