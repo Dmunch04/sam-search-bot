@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-from Commands.Staff.UpdateCommand import CMD_Update
+#from Commands.Staff.UpdateCommand import CMD_Update
 
 TOKEN = os.environ['botToken']
 Client = discord.Client()
