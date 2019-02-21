@@ -17,7 +17,7 @@ class CMD_Update:
 
         await self.updateBot(server)
 
-    async def checkVersion (self):
+    async def checkVersion ():
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
@@ -29,7 +29,7 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await self.update()
+            await update.callback()
 
     async def updateBot (self, server):
         channel = shelp.get_channel(server, 'bot-updates')
