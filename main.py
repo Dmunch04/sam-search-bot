@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-#from Commands.Staff.UpdateCommand import CMD_Update
+from Commands.Staff.UpdateCommand import CMD_Update
 
 TOKEN = os.environ['botToken']
 Client = discord.Client()
@@ -16,7 +16,7 @@ async def on_ready ():
     await client.change_presence(game=discord.Game(name='!help'))
     print("Bot's been booted up. Awaiting user interaction")
 
-    #await CMD_Update.checkVersion()
+    CMD_Update.runCheckVersion()
 
 if __name__ == '__main__':
     for command in commands:

@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import commands
 from Helpers import EmbedHelper as embed
@@ -8,7 +9,6 @@ class CMD_Update:
         self.client = client
 
         self.loop = asyncio.get_event_loop()
-        self.loop.run_until_complete(self.runMeToo())
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
@@ -20,6 +20,9 @@ class CMD_Update:
             return
 
         await self.updateBot(server)
+
+    def runCheckVersion (self):
+        self.loop.run_until_complete(self.checkVersion())
 
     async def checkVersion (self):
         print('Works')
