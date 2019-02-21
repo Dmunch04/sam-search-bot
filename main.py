@@ -18,11 +18,16 @@ async def on_ready ():
 
     #await CMD_Update.checkVersion()
 
-    f = open('Data.testfile.txt', 'r')
-    content = f.read()
+    f = open('Data/testfile.txt', 'r')
+    content1 = f.read()
     f.close()
 
-    print(content)
+    z = open ('file.txt', 'r')
+    content2 = z.read()
+    z.close()
+
+    print('1: ' + content1)
+    print('2: ' + content2)
 
 if __name__ == '__main__':
     for command in commands:
