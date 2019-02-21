@@ -15,7 +15,7 @@ class CMD_Update:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
             return
 
-        await self.updateBot()
+        await self.updateBot(server)
 
     async def checkVersion (self):
         newVersionFile = open('Data/newVersion.txt', 'r')
@@ -29,10 +29,10 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await self.update.callback(self)
+            await self.update().callback()
 
-    async def updateBot (self):
-        #channel = shelp.get_channel(server, 'bot-updates')
+    async def updateBot (self, server):
+        channel = shelp.get_channel(server, 'bot-updates')
 
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
