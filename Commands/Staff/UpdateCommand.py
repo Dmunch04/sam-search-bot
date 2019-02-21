@@ -6,6 +6,7 @@ from Helpers import ServerHelper as shelp
 class CMD_Update:
     def __init__ (self, client):
         self.client = client
+        checkVersion()
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
@@ -17,7 +18,7 @@ class CMD_Update:
 
         await self.updateBot(server)
 
-    async def checkVersion ():
+    async def checkVersion (self):
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
         newVersionFile.close()
@@ -29,7 +30,7 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await update.callback()
+            await self.update.callback()
 
     async def updateBot (self, server):
         channel = shelp.get_channel(server, 'bot-updates')
