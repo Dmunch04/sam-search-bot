@@ -16,7 +16,7 @@ async def on_ready ():
     await client.change_presence(game=discord.Game(name='!help'))
     print("Bot's been booted up. Awaiting user interaction")
 
-    await CMD_Update.checkVersion()
+    #await CMD_Update.checkVersion()
 
     f = open('Data.testfile.txt', 'r')
     content = f.read()
