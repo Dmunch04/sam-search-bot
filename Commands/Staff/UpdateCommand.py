@@ -7,7 +7,8 @@ class CMD_Update:
     def __init__ (self, client):
         self.client = client
         #await self.checkVersion()
-        await checkVersion(self)
+        #await checkVersion(self)
+        self.runMe()
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
@@ -52,6 +53,9 @@ class CMD_Update:
         curVersionFile = open('Data/currentVersion.txt', 'w')
         curVersionFile.write(newVersion)
         curVersionFile.close()
+
+    def runMe (self):
+        print('Works!')
 
 def setup (client):
     client.add_cog(CMD_Update(client))
