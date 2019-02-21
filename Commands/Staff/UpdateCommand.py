@@ -15,26 +15,8 @@ class CMD_Update:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
             return
 
-        newVersionFile = open('Data/newVersion.txt', 'r')
-        newVersion = newVersionFile.read()
-        newVersionFile.close()
+        await updateBot(version)
 
-        curVersionFile = open('Data/currentVersion.txt', 'r')
-        curVersion = curVersionFile.read()
-        curVersionFile.close()
-
-        if curVersion == newVersion:
-            return
-        else:
-            changelogFile = open('Data/changelog.txt', 'r')
-            changes = changelogFile.read()
-            changelogFile.close()
-
-            await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(version), changes, channel)
-
-            curVersionFile = open('Data/currentVersion.txt', 'w')
-            curVersionFile.write(newVersion)
-            curVersionFile.close()
 
     async def checkVersion ():
         newVersionFile = open('Data/newVersion.txt', 'r')
@@ -48,7 +30,18 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await self.update.callback(newVersion)
+            await update.callback(newVersion)
+
+    async def updateBot (version):
+        changelogFile = open('Data/changelog.txt', 'r')
+        changes = changelogFile.read()
+        changelogFile.close()
+
+        await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(version), changes, channel)
+
+        curVersionFile = open('Data/currentVersion.txt', 'w')
+        curVersionFile.write(newVersion)
+        curVersionFile.close()
 
 def setup (client):
     client.add_cog(CMD_Update(client))
