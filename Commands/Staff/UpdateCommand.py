@@ -6,6 +6,17 @@ class CMD_Update:
     def __init__ (self, client):
         self.client = client
 
+    @commands.command(pass_context = True)
+    async def update (self, ctx, version):
+        author = ctx.message.author
+        channel = ctx.message.channel
+
+        if not 'Bot Dev' in [y.name.lower() for y in author.roles]:
+            await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
+            return
+
+        await updateBot(version)
+
     async def checkVersion ():
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
@@ -18,18 +29,7 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await update.callback(newVersion)
-
-    @commands.command(pass_context = True)
-    async def update (self, ctx, version):
-        author = ctx.message.author
-        channel = ctx.message.channel
-
-        if not 'Bot Dev' in [y.name.lower() for y in author.roles]:
-            await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
-            return
-
-        await updateBot(version)
+            await update.callback(self, newVersion)
 
     async def updateBot (version):
         changelogFile = open('Data/changelog.txt', 'r')
