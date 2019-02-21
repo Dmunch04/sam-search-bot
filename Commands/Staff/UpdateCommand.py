@@ -4,11 +4,11 @@ from Helpers import EmbedHelper as embed
 from Helpers import ServerHelper as shelp
 
 class CMD_Update:
-    async def __init__ (self, client):
+    def __init__ (self, client):
         self.client = client
-        #await self.checkVersion()
-        #await checkVersion(self)
-        await self.runMeToo()
+
+        self.loop = asyncio.get_event_loop()
+        self.loop.run_until_complete(self.runMeToo())
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
