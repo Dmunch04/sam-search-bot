@@ -4,11 +4,11 @@ from Helpers import EmbedHelper as embed
 from Helpers import ServerHelper as shelp
 
 class CMD_Update:
-    def __init__ (self, client):
+    async def __init__ (self, client):
         self.client = client
         #await self.checkVersion()
         #await checkVersion(self)
-        self.runMe()
+        await self.runMeToo()
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
@@ -53,10 +53,6 @@ class CMD_Update:
         curVersionFile = open('Data/currentVersion.txt', 'w')
         curVersionFile.write(newVersion)
         curVersionFile.close()
-
-    def runMe (self):
-        print('Works!')
-        await self.runMeToo()
 
     async def runMeToo (self):
         print('Ayy')
