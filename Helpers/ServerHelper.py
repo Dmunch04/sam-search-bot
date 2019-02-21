@@ -30,6 +30,12 @@ async def get_server_channels (server):
 
     return server_channels
 
+# Function that returns a specific channel
+async def get_server_channel (server, channelName):
+    channel = discord.utils.get(server.get_all_channels(), server__name = server.name, name = channel_name)
+
+    return channel
+
 # Function that returns all the servers roles
 async def get_server_roles (server):
     server_roles = server.roles

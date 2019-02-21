@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from Helpers import EmbedHelper as embed
-from Helpers import ChannelHelper as chelp
 from Helpers import ServerHelper as shelp
 
 class CMD_Update:
@@ -33,7 +32,7 @@ class CMD_Update:
             await self.update.callback()
 
     async def updateBot (self, server):
-        channel = chelp.get_channel(server, 'bot-updates')
+        channel = shelp.get_channel(server, 'bot-updates')
 
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
