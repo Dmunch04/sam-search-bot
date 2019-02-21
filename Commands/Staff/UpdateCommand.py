@@ -48,7 +48,7 @@ class CMD_Update:
         if curVersion == newVersion:
             return
         else:
-            await update.callback(newVersion)
+            await self.update.callback(newVersion)
 
 def setup (client):
     client.add_cog(CMD_Update(client))
