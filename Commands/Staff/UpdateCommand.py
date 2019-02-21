@@ -6,7 +6,7 @@ from Helpers import ServerHelper as shelp
 class CMD_Update:
     def __init__ (self, client):
         self.client = client
-        #await self.checkVersion()
+        await self.checkVersion()
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
