@@ -1,5 +1,5 @@
 import discord
-import ServerHelper as serverHelper
+from .ServerHelper import ServerHelper as serverHelper
 
 # Function for getting a channel by it's name
 async def get_channel (server, channel_name):
