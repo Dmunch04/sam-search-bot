@@ -11,7 +11,7 @@ class CMD_Update:
         author = ctx.message.author
         channel = ctx.message.channel
 
-        if not 'Bot Dev' in [y.name.lower() for y in author.roles]:
+        if not 'bot dev' in [y.name.lower() for y in author.roles]:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
             return
 
