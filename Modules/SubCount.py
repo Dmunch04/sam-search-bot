@@ -13,11 +13,20 @@ URL = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsernam
 channelName = 'name'
 apiKey = os.environ['apiToken']
 
-def getSubs ():
+class Channel (self, name, link, subs):
+    self.name = name
+    self.link = link
+    self.subs = subs
+
+def getChannel ():
     rawData = urlopen(URL.format(channelName, apiKey)).read()
 
     jsonData = json.loads(rawData)
 
+    channelName = jsonData['items'][0][]
+    channelLink = jsonData['items'][0][]
     subsAmount = jsonData['items'][0]['statistics']['subscriberCount']
 
-    return subsAmount
+    result = Channel(channelName, channelLink, subsAmount)
+
+    return result

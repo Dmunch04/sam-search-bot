@@ -10,7 +10,10 @@ class CMD_Subs:
     @commands.command(pass_context = True)
     async def subs (self, ctx):
         channel = ctx.message.channel
-        embed.OtherEmbed(self.client, 'Make Indies subscriber count', 'This is the current amount of subscribers, Make Indies YouTube channels has:', count.getSubs(), discord.Color.green(), channel)
+
+        channel = count.getChannel()
+
+        embed.ResultLinkEmbed(self.client, 'Make Indies subscriber count', channel.name, channel.link, "Make Indies YouTube channel's current amount of subscribers: " + channel.subs, channel)
 
 def setup (client):
     client.add_cog(CMD_Subs(client))

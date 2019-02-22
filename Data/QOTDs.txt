@@ -1,0 +1,4 @@
+QOTD 1
+QOTD 2
+QOTD 3
+etc.
