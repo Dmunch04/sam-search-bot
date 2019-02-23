@@ -4,7 +4,7 @@ from discord.ext import commands
 from Helpers import EmbedHelper as embed
 from Helpers import ServerHelper as shelp
 
-global cur_server
+cur_server = ""
 
 class CMD_Update:
     def __init__ (self, client):
@@ -12,8 +12,10 @@ class CMD_Update:
 
     @commands.command(pass_context = True)
     async def update (self, ctx):
+        global cur_server
+
         author = ctx.message.author
-        global cur_server = await shelp.get_server(ctx)
+        cur_server = await shelp.get_server(ctx)
 
         if not 'bot dev' in [y.name.lower() for y in author.roles]:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
@@ -22,13 +24,15 @@ class CMD_Update:
         await self.updateBot()
 
     async def updateBot (self):
+        global cur_server
+
         try:
-            global cur_server
+            cur_server
         except NameError:
             print('Update Manually!')
             return
 
-        channel = await shelp.get_channel(global cur_server, 'bot-updates')
+        channel = await shelp.get_channel(cur_server, 'bot-updates')
 
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
