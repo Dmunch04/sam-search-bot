@@ -22,7 +22,7 @@ class CMD_Update:
         await self.updateBot()
 
     async def updateBot (self):
-        if not cur_server:
+        if cur_server is None:
             print('Update Manually!')
         else:
             channel = shelp.get_channel(cur_server, 'bot-updates')
