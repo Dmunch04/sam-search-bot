@@ -15,7 +15,12 @@ class CMD_QOTD:
 
         qotd_channel = shelp.get_channel(server, 'qotd')
 
-        if args == "":
+        arg = ""
+        for word in args:
+            arg += word
+            arg += " "
+
+        if arg == "":
             try:
                 result = qotd.getQuote()
 
@@ -25,10 +30,10 @@ class CMD_QOTD:
         else:
             try:
                 data = open('Data/QOTDs.txt', 'w')
-                data.write('\n' + args)
+                data.write(arg + '\n')
                 data.close()
 
-                await embed.OtherEmbed(self.client, 'Success!', 'Successfully added a new QOTD!', "I've added '" + args + "' to the QOTD list!", discord.Color.green(), channel)
+                await embed.OtherEmbed(self.client, 'Success!', 'Successfully added a new QOTD!', "I've added '" + arg + "' to the QOTD list!", discord.Color.green(), channel)
             except:
                 await embed.UnknownErrorEmbed(self.client, channel)
 

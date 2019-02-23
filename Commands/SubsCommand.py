@@ -13,7 +13,7 @@ class CMD_Subs:
 
         channel = count.getChannel()
 
-        embed.ResultLinkEmbed(self.client, 'Make Indies subscriber count', channel.name, channel.link, "Make Indies YouTube channel's current amount of subscribers: " + channel.subs, channel)
+        await embed.ResultLinkEmbed(self.client, 'Make Indies subscriber count', channel.name, channel.link, "Make Indies YouTube channel's current amount of subscribers: " + channel.subs, channel)
 
 def setup (client):
     client.add_cog(CMD_Subs(client))

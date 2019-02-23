@@ -10,7 +10,7 @@ else:
 
 URL = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={0}&key={0}'
 
-channelName = 'name'
+channelName = 'Make Indies'
 apiKey = os.environ['apiToken']
 
 class Channel (self, name, link, subs):
