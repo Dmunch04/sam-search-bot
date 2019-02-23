@@ -13,7 +13,7 @@ class CMD_Update:
     @commands.command(pass_context = True)
     async def update (self, ctx):
         author = ctx.message.author
-        cur_server = shelp.get_server(ctx)
+        cur_server = await shelp.get_server(ctx)
 
         if not 'bot dev' in [y.name.lower() for y in author.roles]:
             await embed.CustomErrorEmbed(self.client, 'User Error', 'Permission not found', "Looks like you don't have the permissions to do that, buddy.", channel)
@@ -28,7 +28,7 @@ class CMD_Update:
             print('Update Manually!')
             return
 
-        channel = shelp.get_channel(cur_server, 'bot-updates')
+        channel = await shelp.get_channel(cur_server, 'bot-updates')
 
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
