@@ -16,7 +16,7 @@ async def on_ready ():
     await client.change_presence(game=discord.Game(name='!help'))
     print("Bot's been booted up. Awaiting user interaction")
 
-    CMD_Update.updateBot(client)
+    await CMD_Update.updateBot(client)
 
 if __name__ == '__main__':
     for command in commands:
