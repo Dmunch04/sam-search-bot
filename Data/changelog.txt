@@ -1,3 +1,13 @@
-- Complete rewrite of the bot (Made code cleaner and optimized the code)
+- First part of rewrite done (1/2)
 - Added many new commands
 - Version checking
+- Update command
+
+To Come:
+- Second part of rewrite done (2/2)
+- QOTD command (Admin)
+- Subs command
+- Many more commands
+- Daily YouTube video
+- Unity docs searcher fix
+- Many bug fixes
