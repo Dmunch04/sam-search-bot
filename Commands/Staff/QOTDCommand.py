@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from Helpers import EmbedHelper as embed
 from Helpers import ServerHelper as shelp
-from Modules import QOTD as qotd
+#from Modules import QOTD as qotd
 
 class CMD_QOTD:
     def __init__ (self, client):
@@ -22,7 +22,7 @@ class CMD_QOTD:
 
         if arg == "":
             try:
-                result = qotd.getQuote()
+                #result = qotd.getQuote()
 
                 await embed.OtherEmbed(self.client, 'QOTD Message', '@everyone - Question (#{0})'.format(result.number), result.quote, discord.Color.green() channel)
             except:

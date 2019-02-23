@@ -42,7 +42,7 @@ class CMD_Update:
             if curVersion == newVersion:
                 return
             else:
-                await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(newVersion), changes, channel)
+                await embed.AnnouncementEmbed(self, 'Uuh! A new update has arrived ({0})'.format(newVersion), changes, channel)
 
                 curVersionFile = open('Data/currentVersion.txt', 'w')
                 curVersionFile.write(newVersion)
