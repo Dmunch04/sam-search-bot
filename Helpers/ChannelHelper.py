@@ -8,7 +8,7 @@ async def get_channel (server, channel_name):
     return channel
 
 # Function that returns the default channel of the server
-async def get_default_channel ():
+async def get_default_channel (server):
     default_channel = server.default_channel()
 
     return default_channel

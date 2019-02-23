@@ -22,28 +22,31 @@ class CMD_Update:
         await self.updateBot()
 
     async def updateBot (self):
-        channel = shelp.get_channel(cur_server, 'bot-updates')
-
-        newVersionFile = open('Data/newVersion.txt', 'r')
-        newVersion = newVersionFile.read()
-        newVersionFile.close()
-
-        curVersionFile = open('Data/currentVersion.txt', 'r')
-        curVersion = curVersionFile.read()
-        curVersionFile.close()
-
-        changelogFile = open('Data/changelog.txt', 'r')
-        changes = changelogFile.read()
-        changelogFile.close()
-
-        if curVersion == newVersion:
-            return
+        if not cur_server:
+            print('Update Manually!')
         else:
-            await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(newVersion), changes, channel)
+            channel = shelp.get_channel(cur_server, 'bot-updates')
 
-            curVersionFile = open('Data/currentVersion.txt', 'w')
-            curVersionFile.write(newVersion)
+            newVersionFile = open('Data/newVersion.txt', 'r')
+            newVersion = newVersionFile.read()
+            newVersionFile.close()
+
+            curVersionFile = open('Data/currentVersion.txt', 'r')
+            curVersion = curVersionFile.read()
             curVersionFile.close()
+
+            changelogFile = open('Data/changelog.txt', 'r')
+            changes = changelogFile.read()
+            changelogFile.close()
+
+            if curVersion == newVersion:
+                return
+            else:
+                await embed.AnnouncementEmbed(self.client, 'Uuh! A new update has arrived ({0})'.format(newVersion), changes, channel)
+
+                curVersionFile = open('Data/currentVersion.txt', 'w')
+                curVersionFile.write(newVersion)
+                curVersionFile.close()
 
 def setup (client):
     client.add_cog(CMD_Update(client))
