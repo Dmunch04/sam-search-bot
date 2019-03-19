@@ -2,7 +2,7 @@ import asyncio
 import discord
 from discord.ext import commands
 from Helpers import EmbedHelper as embed
-from Helpers import ServerHelper as shelp
+from Helpers import ServerHelper as serverhelp
 
 cur_server = ""
 
@@ -32,7 +32,7 @@ class CMD_Update:
             print('Update Manually!')
             return
 
-        channel = await shelp.get_server_channel(cur_server, 'bot-updates')
+        channel = await serverhelp.get_server_channel(cur_server, 'bot-updates')
 
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()

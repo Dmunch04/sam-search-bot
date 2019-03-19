@@ -42,7 +42,7 @@ class CMD_Unity:
             search += word
             search += " "
 
-        print(search)
+        print(str(search))
 
         searchResult = ds.search(str(search), 'script')
 
