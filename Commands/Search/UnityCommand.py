@@ -26,7 +26,7 @@ class CMD_Unity:
             search = search.replace('[', '')
             search = search.replace(']', '')
 
-            searchResult = ds.search(search, 'manual')
+            searchResult = ds.search(str(search), 'manual')
 
             await embed.ResultLinkEmbed(self.client, searchResult.title, result.description, result.url, channel)
           except:
@@ -44,7 +44,7 @@ class CMD_Unity:
 
         print(search)
 
-        searchResult = ds.search(search, 'script')
+        searchResult = ds.search(str(search), 'script')
 
         await embed.ResultLinkEmbed(self.client, searchResult.title, result.description, result.url, channel)
 

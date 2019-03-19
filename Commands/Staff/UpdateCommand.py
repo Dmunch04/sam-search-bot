@@ -32,7 +32,7 @@ class CMD_Update:
             print('Update Manually!')
             return
 
-        channel = await shelp.get_channel(cur_server, 'bot-updates')
+        channel = await shelp.get_server_channel(cur_server, 'bot-updates')
 
         newVersionFile = open('Data/newVersion.txt', 'r')
         newVersion = newVersionFile.read()
